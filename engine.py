@@ -17,6 +17,8 @@ def get_move(board, limit=None):
       move = random.choice(list(board.legal_moves))
       if board.is_capture(move):
           return move
+      if board.is_castling(move):
+          return move
       counter += 1
   # if board.is_into_check(move):
   #     move = random.choice(list(board.legal_moves))
