@@ -20,6 +20,12 @@ def get_move(board, limit=None):
       if board.is_castling(move):
           return move
       counter += 1
+  counter = 0
+  while counter < 10:
+      move = random.choice(list(board.legal_moves))
+      if board.is_irreversible(move):
+          return move
+      counter += 1
   # if board.is_into_check(move):
   #     move = random.choice(list(board.legal_moves))
   # def minimax(board, depth=0, maximizingPlayer=1):
