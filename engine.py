@@ -6,9 +6,35 @@ import chess
 
 def get_move(board, limit=None):
   # TODO: Fill this in with an actual chess engine
-  move = random.choice(list(board.legal_moves))
-
+  # choice = list(board.legal_moves)
+  # for i in choice:
+  #     if i.Piece == "Q":
+  #         return i
+  # newBoard = board.mirror()
+  # move = newBoard.peek()
+  counter = 0
+  while counter < 100:
+      move = random.choice(list(board.legal_moves))
+      if board.is_capture(move):
+          return move
+      counter += 1
+  # if board.is_into_check(move):
+  #     move = random.choice(list(board.legal_moves))
+  # def minimax(board, depth=0, maximizingPlayer=1):
+  #   if (depth = 0) or (node == terminal.node):
+  #       return depth
+  #   if maximizingPlayer:
+  #       value := −∞
+  #       for each child of node do
+  #           value := max(value, minimax(child, depth − 1, FALSE))
+  #       return value
+  #   else (* minimizing player *)
+  #       value := +∞
+  #       for each child of node do
+  #           value := min(value, minimax(child, depth − 1, TRUE))
+  #       return value
   #print("playing", move, file=sys.stderr)
+  #move = random.choice(list(board.legal_moves))
   return move
 
 if __name__ == "__main__":
@@ -36,4 +62,3 @@ if __name__ == "__main__":
       print("bestmove %s" % move)
     elif cmd[0] == "quit":
       exit(0)
-      
