@@ -4,6 +4,11 @@ import time
 import random
 import chess
 
+# class Repeats(repeats,previous_move):
+#     def _init_(self, repeats, previous_move):
+#         self.repeats = repeats
+#         self.previous_move = previous_move
+# repeats = Repeats(0,None)
 def get_move(board, limit=None):
   # TODO: Fill this in with an actual chess engine
   # choice = list(board.legal_moves)
@@ -16,14 +21,42 @@ def get_move(board, limit=None):
   while counter < 100:
       move = random.choice(list(board.legal_moves))
       if board.is_capture(move):
+          # if move == repeats.previous_move:
+          #     if repeats.repeat == 3:
+          #         move = random.choice(list(board.legal_moves))
+          #         repeat = 0
+          #         return move
+          #     repeats.repeat += 1
+          # else:
+          #     repeats.repeat = 0
+          # repeats.previous_move = move
           return move
       if board.is_castling(move):
+          # if move == repeats.previous_move:
+          #     if repeats.repeat == 3:
+          #         move = random.choice(list(board.legal_moves))
+          #         repeats.repeat = 0
+          #         return move
+          #     repeats.repeat += 1
+          # else:
+          #     repeats.repeat = 0
+          # repeats.previous_move = move
           return move
       counter += 1
   counter = 0
+  if board.is_repetition(2):
+      move = random.choice(list(board.legal_moves))
+      return move
   while counter < 10:
       move = random.choice(list(board.legal_moves))
       if board.is_irreversible(move):
+          # if move == repeats.previous_move:
+          #     if repeats.repeat == 3:
+          #         move = random.choice(list(board.legal_moves))
+          #         repeats.repeat = 0
+          #         return move
+          #     repeats.repeat += 1
+          # repeats.previous_move = move
           return move
       counter += 1
   # if board.is_into_check(move):
@@ -43,6 +76,16 @@ def get_move(board, limit=None):
   #       return value
   #print("playing", move, file=sys.stderr)
   #move = random.choice(list(board.legal_moves))
+  # if move == repeats.previous_move:
+  #     if repeats.repeat == 3:
+  #         move = random.choice(list(board.legal_moves))
+  #         repeats.repeat = 0
+  #         return move
+  #     repeats.repeat += 1
+  # else:
+  #     repeats.repeat = 0
+  # repeats.previous_move = move
+  move = random.choice(list(board.legal_moves))
   return move
 
 if __name__ == "__main__":

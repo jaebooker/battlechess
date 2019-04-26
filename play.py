@@ -97,4 +97,3 @@ if __name__ == "__main__":
   asyncio.set_event_loop_policy(chess.engine.EventLoopPolicy())
   loop = asyncio.get_event_loop()
   result = loop.run_until_complete(main())
-
